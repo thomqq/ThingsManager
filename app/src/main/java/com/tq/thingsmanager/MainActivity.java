@@ -29,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
 
 
         TableRow tableRow = null;
-        //linearLayout.addView(tableRow);
         for( int i = 0 ; i < tileManager.size(); i++) {
             if( i % 3 == 0 ) {
                 tableRow = new TableRow(this);
