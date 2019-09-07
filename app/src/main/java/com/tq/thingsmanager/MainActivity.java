@@ -2,6 +2,7 @@ package com.tq.thingsmanager;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -49,7 +50,10 @@ public class MainActivity extends AppCompatActivity {
     private View.OnClickListener onTileClick = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Toast.makeText(getApplicationContext(), "cosik: " + (String)v.getTag(), Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getApplicationContext(), "cosik: " + (String)v.getTag(), Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(MainActivity.this, EditActivity.class);
+            intent.putExtra("id", (String) v.getTag());
+            MainActivity.this.startActivity(intent);
         }
     };
 }
