@@ -37,8 +37,8 @@ public class EditActivity extends AppCompatActivity {
 
         prapareGroupName();
 
-        TextView textView = findViewById(R.id.dateView);
-        textView.setOnClickListener(new View.OnClickListener() {
+        View view = findViewById(R.id.btnDate);
+        view.setOnClickListener(new View.OnClickListener() {
             private DatePickerDialog.OnDateSetListener dateListner = new DatePickerDialog.OnDateSetListener() {
                 @Override
                 public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
@@ -58,6 +58,12 @@ public class EditActivity extends AppCompatActivity {
                 dialog.show();
             }
         });
+
+        prepareDate();
+
+    }
+
+    private void prepareDate() {
 
     }
 
