@@ -3,10 +3,19 @@ package com.tq.thingsmanager;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.DatePickerDialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.ibotta.android.support.pickerdialogs.SupportedDatePickerDialog;
+import com.ibotta.android.support.pickerdialogs.SupportedTimePickerDialog;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -14,30 +23,44 @@ import java.util.List;
 
 public class EditActivity extends AppCompatActivity {
 
+    private SupportedDatePickerDialog.OnDateSetListener listner = new SupportedDatePickerDialog.OnDateSetListener() {
+        @Override
+        public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit);
 
         prapareGroupName();
-        prepareCalendar();
+
+        TextView textView = findViewById(R.id.dateView);
+        textView.setOnClickListener(new View.OnClickListener() {
+            private DatePickerDialog.OnDateSetListener dateListner = new DatePickerDialog.OnDateSetListener() {
+                @Override
+                public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+
+                }
+            };
+
+            @Override
+            public void onClick(View v) {
+                Calendar cal = Calendar.getInstance();
+                int year = cal.get(Calendar.YEAR);
+                int month = cal.get(Calendar.MONTH);
+                int day  = cal.get(Calendar.DAY_OF_MONTH);
+
+                SupportedDatePickerDialog dialog = new SupportedDatePickerDialog(EditActivity.this, R.style.SpinnerDatePickerDialogTheme, listner, year, month, day);
+                //dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+            }
+        });
+
     }
 
-    private void prepareCalendar() {
-        Calendar calendar = Calendar.getInstance();
-        int maxDay = calendar.getMaximum(Calendar.DAY_OF_MONTH);
-        int day = calendar.get(Calendar.DAY_OF_MONTH);
-
-        Spinner spinnerDay = findViewById(R.id.spinerDay);
-        List<String> days = new ArrayList<>();
-        for( int i = 1 ; i <= maxDay; ++i) {
-            days.add("" + i);
-        }
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, days);
-        spinnerDay.setAdapter(adapter);
-        spinnerDay.setSelection(day - 1);
-
-    }
 
     private void prapareGroupName() {
         TextView textView = findViewById(R.id.groupName);
