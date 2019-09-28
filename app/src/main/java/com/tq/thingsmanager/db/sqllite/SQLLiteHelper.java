@@ -1,4 +1,4 @@
-package com.tq.thingsmanager.db;
+package com.tq.thingsmanager.db.sqllite;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
-import com.tq.thingsmanager.db.structure.PurchaseGroupStructure;
+import com.tq.thingsmanager.db.sqllite.structure.PurchaseGroupStructure;
 
 public class SQLLiteHelper extends SQLiteOpenHelper  {
 

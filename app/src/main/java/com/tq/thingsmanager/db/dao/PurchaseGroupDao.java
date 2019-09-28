@@ -6,6 +6,5 @@ import java.util.List;
 
 public interface PurchaseGroupDao {
     List<PurchaseGroup> loadAllPurchaseGroup();
-
     long insertPurchaseGroup(PurchaseGroup purchaseGroup);
 }

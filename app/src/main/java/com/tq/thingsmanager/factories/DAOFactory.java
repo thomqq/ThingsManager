@@ -2,12 +2,12 @@ package com.tq.thingsmanager.factories;
 
 import android.content.Context;
 
-import com.tq.thingsmanager.db.SQLLiteHelper;
-import com.tq.thingsmanager.db.dao.PurchaseGroupDao;
-import com.tq.thingsmanager.db.dao.PurchaseGroupDaoImpl;
+import com.tq.thingsmanager.db.PurchaseRepo;
+import com.tq.thingsmanager.db.sqllite.SQLLiteHelper;
+import com.tq.thingsmanager.db.sqllite.PurchaseGroupDaoSQLLite;
 
 public class DAOFactory {
-    public static PurchaseGroupDao getPurchaseGroupDao(Context context) {
-        return new PurchaseGroupDaoImpl(new SQLLiteHelper(context));
+    public static PurchaseRepo getPurchaseRepo(Context context) {
+        return new PurchaseRepo(new PurchaseGroupDaoSQLLite(new SQLLiteHelper(context)));
     }
 }

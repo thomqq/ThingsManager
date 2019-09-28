@@ -1,22 +1,22 @@
-package com.tq.thingsmanager.db.dao;
+package com.tq.thingsmanager.db.sqllite;
 
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.provider.BaseColumns;
 
-import com.tq.thingsmanager.db.SQLLiteHelper;
+import com.tq.thingsmanager.db.dao.PurchaseGroupDao;
 import com.tq.thingsmanager.db.model.PurchaseGroup;
-import com.tq.thingsmanager.db.structure.PurchaseGroupStructure;
+import com.tq.thingsmanager.db.sqllite.structure.PurchaseGroupStructure;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PurchaseGroupDaoImpl implements PurchaseGroupDao {
+public class PurchaseGroupDaoSQLLite implements PurchaseGroupDao {
 
     private SQLLiteHelper dbHelper;
 
-    public PurchaseGroupDaoImpl(SQLLiteHelper dbHelper) {
+    public PurchaseGroupDaoSQLLite(SQLLiteHelper dbHelper) {
         this.dbHelper = dbHelper;
     }
 
