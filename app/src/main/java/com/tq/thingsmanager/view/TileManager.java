@@ -1,19 +1,17 @@
-package com.tq.thingsmanager.tile;
+package com.tq.thingsmanager.view;
 
-import java.util.ArrayList;
+import com.tq.thingsmanager.view.model.tile.TileContent;
+
 import java.util.List;
 
 public class TileManager {
 
     private List<TileContent> tiles;
 
-    public TileManager() {
-        tiles = new ArrayList<>();
-        for( int i = 8 ; i > 0 ; i --) {
-            tiles.add(new TileContent("" + i));
-        }
-
+    public TileManager(List<TileContent> tiles) {
+        this.tiles = tiles;
     }
+
 
     public int size() {
         return tiles.size();

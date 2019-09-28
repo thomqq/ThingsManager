@@ -8,9 +8,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
-import android.widget.Toast;
 
-import com.tq.thingsmanager.tile.TileManager;
+import com.tq.thingsmanager.db.PurchaseRepo;
+import com.tq.thingsmanager.db.SQLLiteHelper;
+import com.tq.thingsmanager.db.dao.PurchaseGroupDao;
+import com.tq.thingsmanager.db.dao.PurchaseGroupDaoImpl;
+import com.tq.thingsmanager.db.model.PurchaseGroup;
+import com.tq.thingsmanager.factories.DAOFactory;
+import com.tq.thingsmanager.view.model.tile.TileContent;
+import com.tq.thingsmanager.view.TileManager;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,8 +28,24 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        TileManager tileManager = new TileManager();
+        PurchaseGroupDao purchaseGroupDao = DAOFactory.getPurchaseGroupDao(getApplicationContext());
+        PurchaseRepo purchaseRepo = new PurchaseRepo(purchaseGroupDao);
+
+        List<PurchaseGroup> purchaseGroups = purchaseRepo.loadAllPurchaseGroup();
+
+        TileManager tileManager = new TileManager( createTiles(purchaseGroups));
         createTile(tileManager);
+    }
+
+    //TODO TQ - to przecieka
+    private List<TileContent> createTiles(List<PurchaseGroup> purchaseGroups) {
+        List<TileContent> result = new ArrayList<>();
+
+        for( PurchaseGroup purchaseGroup : purchaseGroups ) {
+            result.add(new TileContent(purchaseGroup.getId(), purchaseGroup.getName()));
+        }
+
+        return result;
     }
 
     private void createTile(TileManager tileManager) {
