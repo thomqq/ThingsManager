@@ -1,7 +1,7 @@
 package com.tq.thingsmanager.db;
 
 import com.tq.thingsmanager.config.InitData;
-import com.tq.thingsmanager.db.dao.PurchaseGroupDao;
+import com.tq.thingsmanager.db.dao.PurchaseDao;
 import com.tq.thingsmanager.db.model.PurchaseCategory;
 import com.tq.thingsmanager.db.model.PurchaseGroup;
 import com.tq.thingsmanager.view.model.tile.CategoryGroupViewModel;
@@ -12,9 +12,9 @@ import java.util.List;
 
 public class PurchaseRepo {
 
-    private PurchaseGroupDao purchaseGroupDao;
+    private PurchaseDao purchaseGroupDao;
 
-    public PurchaseRepo(PurchaseGroupDao purchaseGroupDao) {
+    public PurchaseRepo(PurchaseDao purchaseGroupDao) {
 
         this.purchaseGroupDao = purchaseGroupDao;
     }

@@ -5,7 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.provider.BaseColumns;
 
-import com.tq.thingsmanager.db.dao.PurchaseGroupDao;
+import com.tq.thingsmanager.db.dao.PurchaseDao;
 import com.tq.thingsmanager.db.model.PurchaseCategory;
 import com.tq.thingsmanager.db.model.PurchaseGroup;
 import com.tq.thingsmanager.db.sqllite.structure.PurchaseCategoryStructure;
@@ -14,11 +14,11 @@ import com.tq.thingsmanager.db.sqllite.structure.PurchaseGroupStructure;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PurchaseGroupDaoSQLLite implements PurchaseGroupDao {
+public class PurchaseDaoSQLLite implements PurchaseDao {
 
     private SQLLiteHelper dbHelper;
 
-    public PurchaseGroupDaoSQLLite(SQLLiteHelper dbHelper) {
+    public PurchaseDaoSQLLite(SQLLiteHelper dbHelper) {
         this.dbHelper = dbHelper;
     }
 

@@ -5,7 +5,7 @@ import com.tq.thingsmanager.db.model.PurchaseGroup;
 
 import java.util.List;
 
-public interface PurchaseGroupDao {
+public interface PurchaseDao {
     List<PurchaseGroup> loadAllPurchaseGroup();
     long insertPurchaseGroup(PurchaseGroup purchaseGroup);
     long insertPurchaseCategory(PurchaseCategory category);
