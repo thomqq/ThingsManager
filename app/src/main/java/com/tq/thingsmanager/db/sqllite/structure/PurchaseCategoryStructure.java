@@ -17,8 +17,7 @@ public final class PurchaseCategoryStructure {
             "CREATE TABLE " + db.TABLE_NAME + " (" +
                     db._ID + " INTEGER PRIMARY KEY," +
                     db.COLUMN_NAME_NAME + " TEXT," +
-                    db.COLUMN_NAME_GROUP_ID + "  INTEGER," +
-                    db.COLUMN_NAME_NAME + " TEXT" +
+                    db.COLUMN_NAME_GROUP_ID + "  INTEGER " +
                     ")";
 
     public static final String SQL_DELETE_ENTRIES =

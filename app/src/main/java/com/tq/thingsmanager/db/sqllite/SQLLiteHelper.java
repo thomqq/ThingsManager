@@ -6,11 +6,12 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import com.tq.thingsmanager.db.sqllite.structure.PurchaseCategoryStructure;
 import com.tq.thingsmanager.db.sqllite.structure.PurchaseGroupStructure;
 
 public class SQLLiteHelper extends SQLiteOpenHelper  {
 
-    public static final int DATABASE_VERSION = 1;
+    public static final int DATABASE_VERSION = 9;
     public static final String DATABASE_NAME = "Purchases.db";
 
 
@@ -21,12 +22,14 @@ public class SQLLiteHelper extends SQLiteOpenHelper  {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(PurchaseGroupStructure.SQL_CREATE_ENTRIES);
+        db.execSQL(PurchaseCategoryStructure.SQL_CREATE_ENTRIES);
 
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL(PurchaseGroupStructure.SQL_DELETE_ENTRIES);
+        db.execSQL(PurchaseCategoryStructure.SQL_DELETE_ENTRIES);
         onCreate(db);
     }
 }

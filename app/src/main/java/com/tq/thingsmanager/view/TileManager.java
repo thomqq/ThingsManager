@@ -1,14 +1,14 @@
 package com.tq.thingsmanager.view;
 
-import com.tq.thingsmanager.view.model.tile.TileContent;
+import com.tq.thingsmanager.view.model.tile.CategoryGroupViewModel;
 
 import java.util.List;
 
 public class TileManager {
 
-    private List<TileContent> tiles;
+    private List<CategoryGroupViewModel> tiles;
 
-    public TileManager(List<TileContent> tiles) {
+    public TileManager(List<CategoryGroupViewModel> tiles) {
         this.tiles = tiles;
     }
 
@@ -21,7 +21,7 @@ public class TileManager {
         return tiles.get(i).getText();
     }
 
-    public String getId(int i) {
-        return tiles.get(i).getText();
+    public Long getId(int i) {
+        return tiles.get(i).getPurchaseGroupId() ;
     }
 }

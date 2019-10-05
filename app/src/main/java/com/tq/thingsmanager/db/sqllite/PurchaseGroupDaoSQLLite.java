@@ -6,7 +6,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.provider.BaseColumns;
 
 import com.tq.thingsmanager.db.dao.PurchaseGroupDao;
+import com.tq.thingsmanager.db.model.PurchaseCategory;
 import com.tq.thingsmanager.db.model.PurchaseGroup;
+import com.tq.thingsmanager.db.sqllite.structure.PurchaseCategoryStructure;
 import com.tq.thingsmanager.db.sqllite.structure.PurchaseGroupStructure;
 
 import java.util.ArrayList;
@@ -69,6 +71,58 @@ public class PurchaseGroupDaoSQLLite implements PurchaseGroupDao {
         purchaseGroup.setId(newId);
 
         return newId;
+    }
+
+    @Override
+    public long insertPurchaseCategory(PurchaseCategory category) {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(PurchaseCategoryStructure.db.COLUMN_NAME_NAME, category.getName());
+        values.put(PurchaseCategoryStructure.db.COLUMN_NAME_GROUP_ID, category.getParchaseGroupId());
+
+        long newId = db.insert(PurchaseCategoryStructure.db.TABLE_NAME, null, values);
+        category.setId(newId);
+
+        return newId;
+    }
+
+    @Override
+    public List<PurchaseCategory> loadAllPurchaseCategoriesForGroup(Long purchaseGroupId) {
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        String[] projection = {
+                BaseColumns._ID,
+                PurchaseCategoryStructure.db.COLUMN_NAME_NAME,
+                PurchaseCategoryStructure.db.COLUMN_NAME_GROUP_ID
+        };
+        String selection =
+                PurchaseCategoryStructure.db.COLUMN_NAME_GROUP_ID + " = ?";
+
+        String[] selectionArgs = {
+                purchaseGroupId.toString()
+        };
+
+        Cursor cursor = db.query(
+                PurchaseCategoryStructure.db.TABLE_NAME,
+                projection,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                null
+        );
+
+        List< PurchaseCategory > items = new ArrayList<>();
+        while ( cursor.moveToNext() ) {
+            long id = cursor.getLong(cursor.getColumnIndexOrThrow(PurchaseCategoryStructure.db._ID));
+            String name = cursor.getString(cursor.getColumnIndexOrThrow(PurchaseCategoryStructure.db.COLUMN_NAME_NAME));
+            Long groupId = cursor.getLong(cursor.getColumnIndexOrThrow(PurchaseCategoryStructure.db.COLUMN_NAME_GROUP_ID));
+            PurchaseCategory purchaseCategory = new PurchaseCategory(id, groupId, name);
+
+            items.add(purchaseCategory);
+        }
+
+        dbHelper.close();
+        return items;
     }
 
 }

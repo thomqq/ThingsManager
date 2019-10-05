@@ -7,7 +7,11 @@ import com.tq.thingsmanager.db.sqllite.SQLLiteHelper;
 import com.tq.thingsmanager.db.sqllite.PurchaseGroupDaoSQLLite;
 
 public class DAOFactory {
+    private static PurchaseRepo purchaseRepo;
     public static PurchaseRepo getPurchaseRepo(Context context) {
-        return new PurchaseRepo(new PurchaseGroupDaoSQLLite(new SQLLiteHelper(context)));
+        if( purchaseRepo == null ) {
+            purchaseRepo = new PurchaseRepo(new PurchaseGroupDaoSQLLite(new SQLLiteHelper(context)));
+        }
+        return purchaseRepo;
     }
 }
