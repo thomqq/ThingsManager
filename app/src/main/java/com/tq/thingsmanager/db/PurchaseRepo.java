@@ -4,10 +4,12 @@ import com.tq.thingsmanager.config.InitData;
 import com.tq.thingsmanager.db.dao.PurchaseDao;
 import com.tq.thingsmanager.db.model.PurchaseCategory;
 import com.tq.thingsmanager.db.model.PurchaseGroup;
+import com.tq.thingsmanager.view.model.purchase.PurchaseView;
 import com.tq.thingsmanager.view.model.tile.CategoryGroupViewModel;
 import com.tq.thingsmanager.view.model.tile.CategoryViewModel;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class PurchaseRepo {
@@ -70,6 +72,42 @@ public class PurchaseRepo {
 
     private void insertPurchaseCategory(PurchaseCategory category) {
         purchaseGroupDao.insertPurchaseCategory(category);
+    }
+
+    public List<PurchaseView> getAllPurchases() {
+
+        List<PurchaseView> purchaseViews = new ArrayList<>();
+        int i = 0;
+        purchaseViews.add(new PurchaseView(i++, "cos1", new Date(), new Date(), 1000));
+        purchaseViews.add(new PurchaseView(i++, "cos2", new Date(), new Date(), 1000));
+        purchaseViews.add(new PurchaseView(i++, "cos3", new Date(), new Date(), 1000));
+        purchaseViews.add(new PurchaseView(i++, "cos4", new Date(), new Date(), 1000));
+        purchaseViews.add(new PurchaseView(i++, "cos5", new Date(), new Date(), 1000));
+        purchaseViews.add(new PurchaseView(i++, "cos6", new Date(), new Date(), 1000));
+        purchaseViews.add(new PurchaseView(i++, "cos7", new Date(), new Date(), 1000));
+        purchaseViews.add(new PurchaseView(i++, "cos8", new Date(), new Date(), 1000));
+        purchaseViews.add(new PurchaseView(i++, "cos9", new Date(), new Date(), 1000));
+        purchaseViews.add(new PurchaseView(i++, "cos11", new Date(), new Date(), 1000));
+        purchaseViews.add(new PurchaseView(i++, "cos12", new Date(), new Date(), 1000));
+        purchaseViews.add(new PurchaseView(i++, "cos13", new Date(), new Date(), 1000));
+        purchaseViews.add(new PurchaseView(i++, "cos14", new Date(), new Date(), 1000));
+        purchaseViews.add(new PurchaseView(i++, "cos15", new Date(), new Date(), 1000));
+        purchaseViews.add(new PurchaseView(i++, "cos16", new Date(), new Date(), 1000));
+        purchaseViews.add(new PurchaseView(i++, "cos17", new Date(), new Date(), 1000));
+        purchaseViews.add(new PurchaseView(i++, "cos18", new Date(), new Date(), 1000));
+        purchaseViews.add(new PurchaseView(i++, "cos19", new Date(), new Date(), 1000));
+        purchaseViews.add(new PurchaseView(i++, "cos21", new Date(), new Date(), 1000));
+        purchaseViews.add(new PurchaseView(i++, "cos22", new Date(), new Date(), 1000));
+        purchaseViews.add(new PurchaseView(i++, "cos23", new Date(), new Date(), 1000));
+        purchaseViews.add(new PurchaseView(i++, "cos24", new Date(), new Date(), 1000));
+        purchaseViews.add(new PurchaseView(i++, "cos25", new Date(), new Date(), 1000));
+        purchaseViews.add(new PurchaseView(i++, "cos26", new Date(), new Date(), 1000));
+        purchaseViews.add(new PurchaseView(i++, "cos27", new Date(), new Date(), 1000));
+        purchaseViews.add(new PurchaseView(i++, "cos28", new Date(), new Date(), 1000));
+        purchaseViews.add(new PurchaseView(i++, "cos29", new Date(), new Date(), 1000));
+
+        return purchaseViews;
+
     }
 }
 

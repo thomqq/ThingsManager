@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class CategoryViewModel implements Serializable {
     private static final long serialVersionUID = 1L;
+
     private Long purchaceCategotyId;
     private String name;
 
